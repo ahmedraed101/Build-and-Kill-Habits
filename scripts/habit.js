@@ -6,14 +6,6 @@ class Habit {
     }
 }
 
-const createHabit = (title) => {
-    const id = 4
-    const newHabit = new Habit(id, title)
-    Habits.push(newHabit)
-    saveHabits()
-    return createHabitDom(newHabit)
-}
-
 const createEl = (type, classes, children=[], text="") => {
     const el = document.createElement(type)
     el.innerText = text
@@ -34,7 +26,8 @@ const createHabitDom =  (habit) => {
     const titleEl = createEl("div", ["title"], [], habit.title)
     const now = new Date()
     const time = Math.floor((now - habit.startTime) / 1000 / 60 / 60 / 24)
-    const timeEl = createEl("div", ["time"], [], `${time} Days`)
+    const finalTime = time === 0 ? "⏳" : `${time} Days`
+    const timeEl = createEl("div", ["time"], [], finalTime)
 
     const deleteButtonEl = createEl("div", ["delete-button"], [], "Delete")
     const restartButtonEl = createEl("div", ["restart-button"], [], "Restart")

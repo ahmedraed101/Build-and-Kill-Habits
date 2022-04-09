@@ -10,3 +10,12 @@ document.querySelector("#app").addEventListener("submit", e => {
     showHabits.appendChild(newHabit)
     input.value = ""
 })
+
+// create habit
+const createHabit = (title) => {
+    const id = 4
+    const newHabit = new Habit(id, title)
+    // Habits.push(newHabit)
+    // saveHabits()
+    return createHabitDom(newHabit)
+}
